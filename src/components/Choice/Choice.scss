@@ -1,0 +1,45 @@
+@import "../../style/vars.scss";
+
+.containerFood {
+  width: 268px;
+  @include flex(flex, row, space-between, center);
+  gap: 6px;
+  border-top: rgb(242, 242, 243) 1px solid;
+  padding: 16px 0;
+  .image {
+    img {
+      display: block;
+    }
+  }
+  .description {
+    width: 100%;
+    .name,
+    .weight,
+    .price {
+      @include font(12px, 400, 16px);
+      display: block;
+    }
+    .name {
+      margin-bottom: 1px;
+    }
+    .weight {
+      color: rgb(177, 177, 177);
+      margin-bottom: 6px;
+    }
+  }
+  .amount {
+    @include flex(flex, row, space-between, center);
+    padding: 9px 12px;
+    width: 84px;
+    height: 40px;
+    background-color: rgb(242, 242, 243);
+    border-radius: 12px;
+    button {
+      border: none;
+      background-color: transparent;
+    }
+    .number {
+      @include font(16px, 400, 22px);
+    }
+  }
+}
