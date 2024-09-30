@@ -7,69 +7,59 @@ import fries from "../assets/fries.png";
 import hotDog from "../assets/hotDog.png";
 
 function App() {
-  const [countBurger, setCountBurger] = useState(0);
-  const [countFries, setCountFries] = useState(0);
-  const [countHotDog, setCountHotDog] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  const calculate = (flag, name, number, price) => {
-    if (flag === "plus") {
-      if (name === "Burger") {
-        setCountBurger(countBurger + 1);
-      } else if (name === "Fries") {
-        setCountFries(countFries + 1);
-      } else if (name === "HotDog") {
-        setCountHotDog(countHotDog + 1);
-      }
-      setTotalCount(totalCount + 1);
-      setTotalPrice(totalPrice + price);
-    } else if (flag === "minus") {
-      if (number === 0) {
-        return;
-      } else {
-        if (name === "Burger") {
-          setCountBurger(countBurger - 1);
-        } else if (name === "Fries") {
-          setCountFries(countFries - 1);
-        } else if (name === "HotDog") {
-          setCountHotDog(countHotDog - 1);
-        }
-        setTotalCount(totalCount - 1);
-        setTotalPrice(totalPrice - price);
-      }
-    }
-  };
-
-  const menu = [
+  const [basket, setBasket] = useState([
     {
       image: burger,
-      name: "Burger",
       nameRu: "Супер сырный",
       weight: "512г",
       price: 550,
-      calculate: calculate,
-      number: countBurger,
+      number: 0,
     },
     {
       image: fries,
-      name: "Fries",
       nameRu: "Картошка фри",
       weight: "180г",
       price: 245,
-      calculate: calculate,
-      number: countFries,
+      number: 0,
     },
     {
       image: hotDog,
-      name: "HotDog",
       nameRu: "Жгучий хот-дог",
       weight: "245г",
       price: 239,
-      calculate: calculate,
-      number: countHotDog,
+      number: 0,
     },
-  ];
+  ]);
+
+  const calculatePlus = (index) => {
+    const newBasket = [...basket];
+    newBasket[index].number += 1;
+    setBasket(newBasket);
+  };
+
+  const calculateMinus = (index) => {
+    const newBasket = [...basket];
+    if (newBasket[index].number === 0) {
+      return;
+    } else {
+      newBasket[index].number -= 1;
+      setBasket(newBasket);
+    }
+  };
+
+  const calculateAmount = () => {
+    const amount = basket.reduce((acc, item) => {
+      return (acc += item.number);
+    }, 0);
+    return amount;
+  };
+
+  const calculateSum = () => {
+    const sum = basket.reduce((acc, item) => {
+      return (acc += item.number * item.price);
+    }, 0);
+    return sum;
+  };
 
   return (
     <>
@@ -78,17 +68,25 @@ function App() {
           <div className="basket">
             <h2>Корзина</h2>
             <div className="amount">
-              <span>{totalCount}</span>
+              <span>{calculateAmount()}</span>
             </div>
           </div>
-          {menu.map((item, index) => {
-            return <Choice menu={item} key={index} />;
+          {basket.map((item, index) => {
+            return (
+              <Choice
+                basket={item}
+                key={index}
+                calculateMinus={calculateMinus}
+                calculatePlus={calculatePlus}
+                index={index}
+              />
+            );
           })}
           <hr />
           <div className="inTotal">
             <h3>Итого</h3>
             <div className="totalPrice">
-              <span>{totalPrice}</span>
+              <span>{calculateSum()}</span>
               <span>₽</span>
             </div>
           </div>

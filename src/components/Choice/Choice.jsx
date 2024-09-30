@@ -1,12 +1,12 @@
 import "./Choice.scss";
 
 function Choice(props) {
-  const { image, name, calculate, nameRu, weight, price, number } = props.menu;
+  const { image, nameRu, weight, price, number } = props.basket;
 
   return (
     <div className="containerFood">
       <div className="image">
-        <img src={image} alt={name} />
+        <img src={image} alt={nameRu} />
       </div>
       <div className="description">
         <div>
@@ -22,7 +22,7 @@ function Choice(props) {
       <div className="amount">
         <button
           onClick={() => {
-            calculate("minus", name, number, price);
+            props.calculateMinus(props.index);
           }}
         >
           -
@@ -30,7 +30,7 @@ function Choice(props) {
         <span className="number">{number}</span>
         <button
           onClick={() => {
-            calculate("plus", name, number, price);
+            props.calculatePlus(props.index);
           }}
         >
           +
