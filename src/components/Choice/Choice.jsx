@@ -22,7 +22,7 @@ function Choice(props) {
       <div className="amount">
         <button
           onClick={() => {
-            calculate("minus", price);
+            calculate("minus", name, number, price);
           }}
         >
           -
@@ -30,7 +30,7 @@ function Choice(props) {
         <span className="number">{number}</span>
         <button
           onClick={() => {
-            calculate("plus", price);
+            calculate("plus", name, number, price);
           }}
         >
           +

@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.scss";
 import Choice from "../components/Choice/Choice";
 import delivery from "../assets/delivery.png";
-import { menu } from "../content/content";
 import burger from "../assets/burger.png";
 import fries from "../assets/fries.png";
 import hotDog from "../assets/hotDog.png";
@@ -14,46 +13,28 @@ function App() {
   const [totalCount, setTotalCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const toCountBurger = (flag, price) => {
+  const calculate = (flag, name, number, price) => {
     if (flag === "plus") {
-      setCountBurger(countBurger + 1);
-      setTotalCount(totalCount + 1);
-      setTotalPrice(totalPrice + price);
-    } else if (flag === "minus") {
-      if (countBurger === 0) {
-        return;
-      } else {
-        setCountBurger(countBurger - 1);
-        setTotalCount(totalCount - 1);
-        setTotalPrice(totalPrice - price);
+      if (name === "Burger") {
+        setCountBurger(countBurger + 1);
+      } else if (name === "Fries") {
+        setCountFries(countFries + 1);
+      } else if (name === "HotDog") {
+        setCountHotDog(countHotDog + 1);
       }
-    }
-  };
-  const toCountFries = (flag, price) => {
-    if (flag === "plus") {
-      setCountFries(countFries + 1);
       setTotalCount(totalCount + 1);
       setTotalPrice(totalPrice + price);
     } else if (flag === "minus") {
-      if (countFries === 0) {
+      if (number === 0) {
         return;
       } else {
-        setCountFries(countFries - 1);
-        setTotalCount(totalCount - 1);
-        setTotalPrice(totalPrice - price);
-      }
-    }
-  };
-  const toCountHot = (flag, price) => {
-    if (flag === "plus") {
-      setCountHotDog(countHotDog + 1);
-      setTotalCount(totalCount + 1);
-      setTotalPrice(totalPrice + price);
-    } else if (flag === "minus") {
-      if (countHotDog === 0) {
-        return;
-      } else {
-        setCountHotDog(countHotDog - 1);
+        if (name === "Burger") {
+          setCountBurger(countBurger - 1);
+        } else if (name === "Fries") {
+          setCountFries(countFries - 1);
+        } else if (name === "HotDog") {
+          setCountHotDog(countHotDog - 1);
+        }
         setTotalCount(totalCount - 1);
         setTotalPrice(totalPrice - price);
       }
@@ -67,7 +48,7 @@ function App() {
       nameRu: "Супер сырный",
       weight: "512г",
       price: 550,
-      calculate: toCountBurger,
+      calculate: calculate,
       number: countBurger,
     },
     {
@@ -76,7 +57,7 @@ function App() {
       nameRu: "Картошка фри",
       weight: "180г",
       price: 245,
-      calculate: toCountFries,
+      calculate: calculate,
       number: countFries,
     },
     {
@@ -85,7 +66,7 @@ function App() {
       nameRu: "Жгучий хот-дог",
       weight: "245г",
       price: 239,
-      calculate: toCountHot,
+      calculate: calculate,
       number: countHotDog,
     },
   ];
