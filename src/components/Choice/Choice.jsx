@@ -1,29 +1,28 @@
 import "./Choice.scss";
-import burger from "../../assets/burger.png";
 
 function Choice(props) {
-  const { food, minus, name, plus, weight, price, number } = props.menu;
+  const { image, name, calculate, nameRu, weight, price, number } = props.menu;
 
   return (
     <div className="containerFood">
       <div className="image">
-        <img src={food} alt={name} />
+        <img src={image} alt={name} />
       </div>
       <div className="description">
         <div>
-          <span className="name">{name}</span>
+          <span className="name">{nameRu}</span>
         </div>
         <div>
           <span className="weight">{weight}</span>
         </div>
         <div>
-          <span className="price">{price}</span>
+          <span className="price">{price} ₽</span>
         </div>
       </div>
       <div className="amount">
         <button
           onClick={() => {
-            minus();
+            calculate("minus", price);
           }}
         >
           -
@@ -31,7 +30,7 @@ function Choice(props) {
         <span className="number">{number}</span>
         <button
           onClick={() => {
-            plus();
+            calculate("plus", price);
           }}
         >
           +

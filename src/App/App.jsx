@@ -14,78 +14,79 @@ function App() {
   const [totalCount, setTotalCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const toCountBurgerPlus = () => {
-    setCountBurger(countBurger + 1);
-    setTotalCount(totalCount + 1);
-    setTotalPrice(totalPrice + 550);
-  };
-  const toCountBurgerMinus = () => {
-    if (countBurger === 0) {
-      return;
-    } else {
-      setCountBurger(countBurger - 1);
-      setTotalCount(totalCount - 1);
-      setTotalPrice(totalPrice - 550);
+  const toCountBurger = (flag, price) => {
+    if (flag === "plus") {
+      setCountBurger(countBurger + 1);
+      setTotalCount(totalCount + 1);
+      setTotalPrice(totalPrice + price);
+    } else if (flag === "minus") {
+      if (countBurger === 0) {
+        return;
+      } else {
+        setCountBurger(countBurger - 1);
+        setTotalCount(totalCount - 1);
+        setTotalPrice(totalPrice - price);
+      }
     }
   };
-
-  const toCountFriesPlus = () => {
-    setCountFries(countFries + 1);
-    setTotalCount(totalCount + 1);
-    setTotalPrice(totalPrice + 245);
-  };
-  const toCountFriesMinus = () => {
-    if (countFries === 0) {
-      return;
-    } else {
-      setCountFries(countFries - 1);
-      setTotalCount(totalCount - 1);
-      setTotalPrice(totalPrice - 245);
+  const toCountFries = (flag, price) => {
+    if (flag === "plus") {
+      setCountFries(countFries + 1);
+      setTotalCount(totalCount + 1);
+      setTotalPrice(totalPrice + price);
+    } else if (flag === "minus") {
+      if (countFries === 0) {
+        return;
+      } else {
+        setCountFries(countFries - 1);
+        setTotalCount(totalCount - 1);
+        setTotalPrice(totalPrice - price);
+      }
     }
   };
-
-  const toCountHotDogPlus = () => {
-    setCountHotDog(countHotDog + 1);
-    setTotalCount(totalCount + 1);
-    setTotalPrice(totalPrice + 239);
-  };
-  const toCountHotDogMinus = () => {
-    if (countHotDog === 0) {
-      return;
-    } else {
-      setCountHotDog(countHotDog - 1);
-      setTotalCount(totalCount - 1);
-      setTotalPrice(totalPrice - 239);
+  const toCountHot = (flag, price) => {
+    if (flag === "plus") {
+      setCountHotDog(countHotDog + 1);
+      setTotalCount(totalCount + 1);
+      setTotalPrice(totalPrice + price);
+    } else if (flag === "minus") {
+      if (countHotDog === 0) {
+        return;
+      } else {
+        setCountHotDog(countHotDog - 1);
+        setTotalCount(totalCount - 1);
+        setTotalPrice(totalPrice - price);
+      }
     }
   };
 
   const menu = [
     {
-      food: burger,
-      name: "Супер сырный",
+      image: burger,
+      name: "Burger",
+      nameRu: "Супер сырный",
       weight: "512г",
-      price: "550₽",
-      minus: toCountBurgerMinus,
+      price: 550,
+      calculate: toCountBurger,
       number: countBurger,
-      plus: toCountBurgerPlus,
     },
     {
-      food: fries,
-      name: "Картошка фри",
+      image: fries,
+      name: "Fries",
+      nameRu: "Картошка фри",
       weight: "180г",
-      price: "245₽",
-      minus: toCountFriesMinus,
+      price: 245,
+      calculate: toCountFries,
       number: countFries,
-      plus: toCountFriesPlus,
     },
     {
-      food: hotDog,
-      name: "Жгучий хот-дог",
+      image: hotDog,
+      name: "HotDog",
+      nameRu: "Жгучий хот-дог",
       weight: "245г",
-      price: "239₽",
-      minus: toCountHotDogMinus,
+      price: 239,
+      calculate: toCountHot,
       number: countHotDog,
-      plus: toCountHotDogPlus,
     },
   ];
 
