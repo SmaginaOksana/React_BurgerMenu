@@ -1,65 +1,31 @@
-@import "../style/vars.scss";
-main {
+.wrapper {
   background-color: rgb(242, 242, 243);
-  height: 100vh;
-  padding-top: 100px;
   .container {
-    background-color: white;
-    @include flex(flex, column, space-between, center);
-    margin: auto;
-    width: 300px;
-    padding: 24px 16px;
-    border-radius: 18px;
-    .basket {
+    width: 1440px;
+    margin: 0 auto;
+    padding-right: 75px;
+    padding-left: 75px;
+    @media (max-width: 1439px) {
       width: 100%;
-      @include flex(flex, row, space-between, flex-start);
-      h2 {
-        @include font(24px, 600, 100%);
-        margin-bottom: 12px;
-      }
-      .amount {
-        background-color: rgb(242, 242, 243);
-        border-radius: 6px;
-        height: 20px;
-        padding: 2px 17px;
-        @include font(12px, 400, 16px);
+      padding-right: 50px;
+      padding-left: 50px;
+    }
+    @media (max-width: 600px) {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+    @media (max-width: 400px) {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+    button {
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(255, 171, 8);
       }
     }
-    hr {
-      background-color: rgb(242, 242, 243);
-      height: 1px;
-      width: 100%;
-      border: none;
-      margin-bottom: 16px;
-    }
-    .inTotal {
-      width: 100%;
-      @include flex(flex, row, space-between, center);
-      margin-bottom: 24px;
-      h3 {
-        @include font(16px, 400, 130%);
-      }
-    }
-    .toOrder {
-      padding: 12px 71px;
-      width: 100%;
-      margin-bottom: 8px;
-      color: white;
-      @include font(16px, 400, 100%);
-      border-radius: 12px;
-      background-color: rgb(255, 112, 32);
-      border: none;
-    }
-    .delivery {
-      width: 100%;
-      @include flex(flex, row, flex-start, center);
-      gap: 8px;
-      img {
-        display: block;
-      }
-      span {
-        @include font(12px, 400, 16px);
-      }
+    img {
+      display: block;
     }
   }
 }
