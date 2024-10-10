@@ -1,13 +1,19 @@
 import "./Header.scss";
 import logoTop from "../../assets/logoTop.png";
 import pic from "../../assets/pic.png";
+import user from "../../assets/user.png";
 
-function Header(props) {
+function Header() {
   return (
     <header>
       <div className="container">
-        <div className="logo">
-          <img src={logoTop} alt="logo" />
+        <div className="logoAndUser">
+          <div className="logo">
+            <img src={logoTop} alt="logo" />
+          </div>
+          <div className="user">
+            <img src={user} alt="user" />
+          </div>
         </div>
         <div className="titleContainer">
           <div className="pic">

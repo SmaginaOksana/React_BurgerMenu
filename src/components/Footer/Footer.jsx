@@ -4,7 +4,7 @@ import logoEnd from "../../assets/logoEnd.png";
 import vk from "../../assets/vk.png";
 import telegram from "../../assets/telegram.png";
 
-function Footer(props) {
+function Footer() {
   return (
     <footer>
       <div className="container">

@@ -14,11 +14,20 @@ header {
       padding-top: 20px;
       padding-bottom: 20px;
     }
-    .logo {
+    .logoAndUser {
       margin-bottom: 24px;
-      img {
-        width: 150px;
-        margin: auto;
+      @include flex(flex, row, center, center);
+      .logo {
+        flex-grow: 1;
+        img {
+          width: 150px;
+          margin: auto;
+        }
+      }
+      .user {
+        img {
+          width: 50px;
+        }
       }
     }
     .titleContainer {

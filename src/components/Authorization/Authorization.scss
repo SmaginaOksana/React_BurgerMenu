@@ -1,0 +1,40 @@
+@import "../../style/vars.scss";
+.authContainer {
+  background-color: white;
+  @include flex(flex, column, space-between, center);
+  width: 400px;
+  margin: auto;
+  padding: 24px;
+  border-radius: 18px;
+  @media (max-width: 1100px) {
+    width: 100%;
+  }
+  .title {
+    @include font(24px, 600, 100%);
+    margin-bottom: 12px;
+    @media (max-width: 1100px) {
+      width: 100%;
+      @include font(20px, 600, 100%);
+    }
+  }
+  .authForm {
+    width: 100%;
+    @include flex(flex, column, space-between, center);
+    gap: 10px;
+    input {
+      padding: 8px;
+      width: 100%;
+      &::placeholder {
+        @include font(16px, 400, 100%);
+      }
+    }
+    input[type="submit"] {
+      padding: 12px 71px;
+      color: white;
+      @include font(16px, 400, 100%);
+      border-radius: 12px;
+      background-color: rgb(255, 112, 32);
+      border: none;
+    }
+  }
+}
